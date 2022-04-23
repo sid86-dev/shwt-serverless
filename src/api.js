@@ -11,7 +11,9 @@ const router = express.Router();
 
 app.use(express.urlencoded({ extended: false }))
 app.use('/.netlify/functions/api', router);
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:3000/', 'https://shwt.xyz/']
+}));
 
 mongoose.connect(process.env.MONGO_URI)
 
