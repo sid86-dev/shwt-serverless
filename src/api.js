@@ -4,12 +4,14 @@ const mongoose = require('mongoose');
 const ShortUrl = require('../models/shortUrl')
 const Parser = require('shortid');
 require('dotenv').config();
+const cors = require('cors')
 
 const app = express();
 const router = express.Router();
 
 app.use(express.urlencoded({ extended: false }))
 app.use('/.netlify/functions/api', router);
+app.use(cors())
 
 mongoose.connect(process.env.MONGO_URI)
 
